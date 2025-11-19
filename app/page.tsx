@@ -256,7 +256,17 @@ export default function Home() {
 
         {/* 底部备注 */}
         <div className="text-center text-sm text-slate-500 dark:text-slate-400 space-y-2">
-          <p className="text-slate-600 dark:text-slate-300 font-medium">作者：十月的寒流</p>
+          <p className="text-slate-600 dark:text-slate-300 font-medium">
+            作者：
+            <a
+              href="https://space.bilibili.com/600592"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 dark:text-blue-400 hover:underline ml-1"
+            >
+              十月的寒流
+            </a>
+          </p>
           <div className="space-y-1">
             <p>灵感来源：</p>
             <a
