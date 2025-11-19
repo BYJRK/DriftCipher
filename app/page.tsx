@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function Home() {
   const [mode, setMode] = useState<'encrypt' | 'decrypt'>('encrypt');
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState('TIME MAKES DIFFERENT');
   const [output, setOutput] = useState('');
   const [copied, setCopied] = useState(false);
 
@@ -208,13 +208,24 @@ export default function Home() {
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
               输入文本
             </label>
-            <textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder={`请输入要${mode === 'encrypt' ? '加密' : '解密'}的文本...\n提示：Ctrl+Enter 快速转换`}
-              className="w-full h-32 px-4 py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-            />
+            <div className="relative">
+              <textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyPress}
+                placeholder={`请输入要${mode === 'encrypt' ? '加密' : '解密'}的文本...\n提示：Ctrl+Enter 快速转换`}
+                className="w-full h-32 px-4 py-3 pr-12 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+              />
+              {input && (
+                <button
+                  onClick={() => setInput('')}
+                  className="absolute top-3 right-3 p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
+                  title="清空输入"
+                >
+                  <span className="text-slate-600 dark:text-slate-400">🗑️</span>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* 转换按钮 */}
